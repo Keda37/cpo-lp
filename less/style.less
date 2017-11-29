@@ -10,6 +10,8 @@
   font-size: 16px;
   margin: 0;
   padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: auto;
 }
 
 .wrapper {
@@ -26,8 +28,6 @@
   padding-top: 36px;
   box-sizing: border-box;
   height: 750px;
-  // background: url(../img/Banner.png) center no-repeat;
-
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.0001) 40.36%, #FFFFFF 100%), linear-gradient(0deg, rgba(39, 16, 48, 0.7), rgba(39, 16, 48, 0.7)), url(../img/Banner.png) center no-repeat;
   background-size: cover;
   &__top {
@@ -451,9 +451,9 @@
 &__info {
   &-wrapper {
     margin-top: 40px;
-  padding-top: 50px;
-  padding-bottom: 27px;
-  background: #f6f6f6;
+    padding-top: 50px;
+    padding-bottom: 27px;
+    background: #f6f6f6;
   }
   max-width: 1220px;
   margin-left: auto;
@@ -545,6 +545,7 @@
       height: 48px;
       margin-left: 12px;
       margin-right: 12px;
+      position: relative;
 
       &__application-submit {
         height: 48px;
@@ -561,6 +562,7 @@
         padding: 0;
         margin-left: 40px;
         cursor: pointer;
+        outline: none;
       }
     }
 
@@ -571,8 +573,7 @@
       box-sizing: border-box;
       border-radius: 10px;
       text-align: center;
-      padding-left: 20px;
-      padding-right: 20px;
+      padding: 0 20px;
       font-weight: 300;
       line-height: 46px;
       font-size: 16px;
@@ -1011,5 +1012,35 @@
 
   &__submith-hide {
     display: none;
+  }
+}
+
+
+.form-item.has-error,
+.registration__form-item.has-error,
+.modal__form-item.has-error {
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 5px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    background-color: #b20933;
+    z-index: 2; 
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    display: block;
+    top: 12px;
+    right: 10px;
+    background: url(../img/ic-error-outline-24-px.svg) center no-repeat;
   }
 }

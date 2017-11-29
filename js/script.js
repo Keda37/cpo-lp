@@ -1,6 +1,58 @@
+// проверка email 
+function validateEmail(email) {
+  var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(email);
+}
+
+// проверка на заполненность блоков
+function checkSubmitButton(formInput) {
+  var $form = formInput;
+  var errorInput = 0;
+  var email = $form.find('.mail-input').val();
+
+  $('input[required]', $form).each(function() {
+    var valueInput = $(this).val();
+    var parentInput = $(this).parent();
+
+    if (!valueInput) {
+      parentInput.addClass('has-error');
+      errorInput = errorInput + 1;
+    } else {
+      parentInput.removeClass('has-error');
+
+      if ($(this).hasClass('mail-input')) {
+        if(validateEmail(email)) {
+          parentInput.removeClass('has-error');
+        } else {
+         parentInput.addClass('has-error');
+         errorInput = errorInput + 1;
+       }
+     }
+   }
+   return errorInput;
+ })
+  if(errorInput == 0)  {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+
+// валидация формы
+
+$('.submit-button').click(function(e) {
+  var formInput = $(this).parents('form');
+  e.preventDefault();
+  if (checkSubmitButton(formInput)) {
+    alert('123');
+  }
+});
+
+
 
 // появление меток при клике в инпут и заполнении его
-$('.form-show-label').click( function() {
+$('.form-show-label').focusin( function() {
   $(this).addClass('active');
   $(this).siblings('label').fadeIn(100);
 });
@@ -15,8 +67,8 @@ $('.form-show-label').focusout(function() {
   }
 });
 
-// 
-$('.form-item__input').click( function() {
+// обработка инпутов в красной форме
+$('.form-item__input').focusin( function() {
   $(this).addClass('active');
 });
 
