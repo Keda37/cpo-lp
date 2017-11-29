@@ -39,13 +39,19 @@ function checkSubmitButton(formInput) {
 }
 
 
-// валидация формы
+// отправка форм на главной
 
 $('.submit-button').click(function(e) {
   var formInput = $(this).parents('form');
   e.preventDefault();
   if (checkSubmitButton(formInput)) {
-    alert('123');
+    if ($(this).hasClass('modal__form-submit')) {
+      $(this).parents('.modal__form').hide();
+      $('[data-modal="ok-form"]').fadeIn(150);
+    } else {
+      $('.modal').fadeIn(150);
+      $('[data-modal="ok-form"]').show();
+    }    
   }
 });
 
