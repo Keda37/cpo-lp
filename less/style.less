@@ -161,9 +161,9 @@
       }
     }
     &-list {
-      margin-top: 99px;
-      padding-left: 30px;
-      padding-right: 20px;
+      margin-top: 37px;
+      padding-left: 44px;
+      padding-right: 30px;
       margin-bottom: 0;
       list-style: none;
       font-weight: 300;
@@ -172,11 +172,25 @@
       color: #000000;
     }
 
+    &-item {
+      position: relative;
+      padding-left: 25px;
+      margin-bottom: 15px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
     &-item:before {
-      content: "•";
-      display: inline-block;
-      margin-right: 8px;
-      margin-left: 4px;
+      content: "";
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      border-radius: 100%;
+      top: 10px;
+      left: 0;
+      background: #000000;
     }
 
     &-download {
@@ -190,7 +204,7 @@
       text-align: center;
       color: #D6001D;
       text-decoration: none;
-      margin-top: 85px;
+      margin-top: 24px;
       margin-left: auto;
       margin-right: auto;
       width: 309px;
