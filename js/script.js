@@ -6,14 +6,26 @@ $('.form-show-label').click( function() {
 });
 
 $('.form-show-label').focusout(function() {
-  var label = $(this).attr('placeholder');
   var field = $(this).val();
   var fieldtrim = $.trim(field);
   if (fieldtrim == '') {
-    $(this).attr('placeholder', label);
     $(this).removeClass('active');
     $(this).val("");
     $(this).siblings('label').fadeOut(100);
+  }
+});
+
+// 
+$('.form-item__input').click( function() {
+  $(this).addClass('active');
+});
+
+$('.form-item__input').focusout(function() {
+  var field = $(this).val();
+  var fieldtrim = $.trim(field);
+  if (fieldtrim == '') {
+    $(this).val("");
+    $(this).removeClass('active');
   }
 });
 
